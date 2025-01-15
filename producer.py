@@ -2,11 +2,12 @@ from pika import BlockingConnection, ConnectionParameters
 
 connection_params = ConnectionParameters(
     host='localhost',
-    port=5762
+    port=5672
 )
 
 
 def main():
+    """Основная функция отправки сообщений."""
     with BlockingConnection(connection_params) as connection:
         with connection.channel() as channel:
             channel.queue_declare(queue='messages')
